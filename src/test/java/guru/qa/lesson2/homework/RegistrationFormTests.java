@@ -1,13 +1,12 @@
 package guru.qa.lesson2.homework;
 
-import com.codeborne.selenide.SelenideElement;
 import guru.qa.lesson2.BaseTest;
 import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class RegistrationFormTests extends BaseTest {
 
@@ -21,33 +20,27 @@ public class RegistrationFormTests extends BaseTest {
         $("#lastName").setValue("Saleeva");
         $("#userEmail").setValue("test@mail.ru");
 
-        $("label[for='gender-radio-2']").click();
+        $("#genterWrapper").$(byText("Female")).click();
         $("#userNumber").setValue("8888888888");
 
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").selectOptionByValue("1993");
-        $(".react-datepicker__month-select").selectOptionByValue("5");
-        $("div[aria-label='Choose Tuesday, June 8th, 1993']").click();
+        $(".react-datepicker__year-select").selectOption("1993");
+        $(".react-datepicker__month-select").selectOption("June");
+        $(".react-datepicker__day--008").click();
 
-        $("input#subjectsInput").setValue("Ma");
-        $x("//div[contains(text(), \"Maths\")]").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("#subjectsInput").setValue("Computer Science").pressEnter();
 
-        $("input#subjectsInput").setValue("Com");
-        $x("//div[contains(text(), \"Computer\")]").click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
 
-        $("label[for='hobbies-checkbox-2']").click();
-        $("label[for='hobbies-checkbox-3']").click();
-
-        File file = new File("src/test/resources/Smile.png");
-        String path = file.getAbsolutePath();
-        $("#uploadPicture").sendKeys(path);
+        $("#uploadPicture").uploadFromClasspath("Smile.png");
         $("#currentAddress").setValue("Moscow");
 
-        scrollToElement($("#state"));
-        $("#state").click();
-        $x("//div[contains(text(), \"H\")]").click();
+        $("#state").scrollTo().click();
+        $(byText("Haryana")).click();
         $("#city").click();
-        $x("//div[contains(text(), \"Pa\")]").click();
+        $(byText("Panipat")).click();
 
         $("#submit").click();
 
@@ -64,7 +57,7 @@ public class RegistrationFormTests extends BaseTest {
     }
 
     private void checkField(String fieldName, String expectedValue){
-        $x("//tr/td[contains(text(), '" + fieldName + "')]/following-sibling::td").shouldHave(text(expectedValue));
+        $(".table-responsive tbody").$(byText(fieldName)).sibling(0).shouldHave(text(expectedValue));
     }
 
     private void closeGoogleAdvert(){
@@ -72,8 +65,5 @@ public class RegistrationFormTests extends BaseTest {
         if ($(idCloseAdd).exists()){
             $(idCloseAdd).click();
         }
-    }
-    private void scrollToElement(SelenideElement element){
-        executeJavaScript("arguments[0].scrollIntoView(true);", element);
     }
 }
