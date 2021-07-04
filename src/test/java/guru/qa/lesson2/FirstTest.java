@@ -1,4 +1,4 @@
-package guru.qa;
+package guru.qa.lesson2;
 
 import org.junit.jupiter.api.*;
 

@@ -1,4 +1,4 @@
-package guru.qa;
+package guru.qa.lesson2;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,13 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 
-public class TextBoxTests {
-
-    @BeforeAll
-    static void setUp(){
-        Configuration.baseUrl="https://demoqa.com";
-        Configuration.startMaximized = true;
-    }
+public class TextBoxTests extends BaseTest{
 
     @Test
     void positiveFillTest(){
