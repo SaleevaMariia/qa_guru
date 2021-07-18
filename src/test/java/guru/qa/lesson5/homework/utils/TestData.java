@@ -1,4 +1,4 @@
-package guru.qa.lesson5.homework;
+package guru.qa.lesson5.homework.utils;
 
 import com.github.javafaker.Faker;
 import com.github.javafaker.service.FakeValuesService;

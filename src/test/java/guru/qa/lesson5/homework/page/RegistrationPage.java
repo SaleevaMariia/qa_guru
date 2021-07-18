@@ -1,4 +1,6 @@
-package guru.qa.lesson5.homework;
+package guru.qa.lesson5.homework.page;
+
+import guru.qa.lesson5.homework.utils.TestData;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;

@@ -1,6 +1,8 @@
 package guru.qa.lesson5.homework;
 
 import com.codeborne.selenide.Configuration;
+import guru.qa.lesson5.homework.page.RegistrationPage;
+import guru.qa.lesson5.homework.utils.TestData;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
