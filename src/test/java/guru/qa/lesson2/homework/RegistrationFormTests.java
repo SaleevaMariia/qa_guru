@@ -3,10 +3,9 @@ package guru.qa.lesson2.homework;
 import guru.qa.lesson2.BaseTest;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationFormTests extends BaseTest {
 
@@ -26,7 +25,7 @@ public class RegistrationFormTests extends BaseTest {
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").selectOption("1993");
         $(".react-datepicker__month-select").selectOption("June");
-        $(".react-datepicker__day--008").click();
+        $$(".react-datepicker__day--008").filter(not(cssClass(".react-datepicker__day--outside-month"))).first().click();
 
         $("#subjectsInput").setValue("Maths").pressEnter();
         $("#subjectsInput").setValue("Computer Science").pressEnter();
