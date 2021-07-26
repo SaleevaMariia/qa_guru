@@ -17,7 +17,7 @@ public class SelenideSoftAssertionsTest {
     }
 
     @Test
-    public void JUNIT5ExampleInSoftAssertionsExist() {
+    public void junit5ExampleInSoftAssertionsExist() {
         open("/selenide/selenide");
         $("[data-content='Wiki']").click();
         $("#wiki-pages-filter").setValue("SoftAssertions");
